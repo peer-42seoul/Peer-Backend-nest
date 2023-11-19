@@ -9,6 +9,8 @@ import {
 import * as winston from 'winston';
 dotenv.config();
 
+// console.log(process.env.DATABASE_USER);
+
 async function bootstrap() {
   const instance = winston.createLogger({
     format: winston.format.combine(
@@ -25,6 +27,7 @@ async function bootstrap() {
   //   });
   const app = await NestFactory.create(AppModule);
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
-  await app.listen(process.env.SEERVER_PORT);
+  console.log(process.env.SERVER_PORT);
+  await app.listen(process.env.SERVER_PORT);
 }
 bootstrap();

@@ -12,7 +12,7 @@ import {
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AlramModule } from './alram/alram.module';
-import { User } from './entity/user.eitnty';
+import { Temp } from './entity/temp.eitnty';
 
 @Module({
   imports: [
@@ -57,11 +57,11 @@ import { User } from './entity/user.eitnty';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DATABASE_HOST,
-      port: +process.env.DATABASE_PORT,
-      username: process.env.DARABASE_USER,
-      password: process.env.DARABASE_PASS,
-      database: process.env.DARABASE_DB,
-      entities: [User],
+      port: parseInt(process.env.DATABASE_PORT),
+      username: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASS,
+      database: process.env.DATABASE_DB,
+      entities: [Temp],
       synchronize: false, // 프로덕션 환경에서는 false로 설정
     }),
     AlramModule,

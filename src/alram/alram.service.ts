@@ -1,12 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/entity/user.eitnty';
+import { Temp } from 'src/entity/temp.eitnty';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class AlramService {
   constructor(
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
+    @InjectRepository(Temp)
+    private tempRepository: Repository<Temp>,
   ) {}
+
+  async findAll(): Promise<Temp[]> {
+    return this.tempRepository.find();
+  }
 }
