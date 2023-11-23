@@ -1,13 +1,13 @@
 name: CI/CD-nestJS
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main", "dev" ]
   pull_request:
     branches: [ "main", dev ]
     types: [ "opened", "reopened", "synchronize", "closed" ]
   workflow_call:
-  workflow_dispatch:
 
 permissions:
   contents: read
