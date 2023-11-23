@@ -11,9 +11,6 @@ on:
 permissions:
   contents: read
 
-env:
-  WORKING_DIRECTORY: ./backend
-
 jobs:
   build:
     runs-on: ubuntu-latest
