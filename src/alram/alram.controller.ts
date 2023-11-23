@@ -2,7 +2,6 @@ import { Controller, Get, Inject, LoggerService } from '@nestjs/common';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { AlramService } from './alram.service';
 import { Temp } from 'src/entity/temp.eitnty';
-import { get } from 'http';
 
 @Controller('alram')
 export class AlramController {

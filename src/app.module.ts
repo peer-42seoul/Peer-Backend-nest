@@ -13,6 +13,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AlramModule } from './alram/alram.module';
 import { Temp } from './entity/temp.eitnty';
+import * as DailyRotateFile from 'winston-daily-rotate-file';
 
 @Module({
   imports: [
@@ -36,7 +37,7 @@ import { Temp } from './entity/temp.eitnty';
         //   filename: 'error.log',
         //   level: 'error',
         // }),
-        new (require('winston-daily-rotate-file'))({
+        new DailyRotateFile({
           format: winston.format.combine(
             winston.format.timestamp({
               format: 'YYYY-MM-DD HH:mm:ss',
