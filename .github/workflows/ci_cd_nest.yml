@@ -7,6 +7,7 @@ on:
     branches: [ "main", dev ]
     types: [ "opened", "reopened", "synchronize", "closed" ]
   workflow_call:
+  workflow_dispatch:
 
 permissions:
   contents: read
