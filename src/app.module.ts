@@ -18,7 +18,7 @@ import * as DailyRotateFile from 'winston-daily-rotate-file';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: `.env.${process.env.NODE_ENV}`,
+      envFilePath: `./env/.env-nest.${process.env.NODE_ENV}`,
       isGlobal: true,
     }),
     WinstonModule.forRoot({
