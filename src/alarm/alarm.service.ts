@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Temp } from 'src/entity/temp.eitnty';
+import { Temp } from '../entity/temp.eitnty';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class AlramService {
+export class AlarmService {
   constructor(
     @InjectRepository(Temp)
     private tempRepository: Repository<Temp>,

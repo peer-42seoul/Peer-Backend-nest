@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity({ name: 'temp' })
 export class Temp {
@@ -6,4 +6,8 @@ export class Temp {
   id: number;
   @Column()
   message: string;
+  @CreateDateColumn()
+  created_at: Date;
+  @UpdateDateColumn()
+  updated_at: Date;
 }

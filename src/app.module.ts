@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AlramController } from './alram/alram.controller';
-import { AlramService } from './alram/alram.service';
+import { AlarmController } from './alarm/alarm.controller';
+import { AlarmService } from './alarm/alarm.service';
 import { ConfigModule } from '@nestjs/config';
 import * as winston from 'winston';
 import {
@@ -11,7 +11,7 @@ import {
 } from 'nest-winston';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
-import { AlramModule } from './alram/alram.module';
+import { AlarmModule } from './alarm/alarm.module';
 import { Temp } from './entity/temp.eitnty';
 import * as DailyRotateFile from 'winston-daily-rotate-file';
 
@@ -33,10 +33,6 @@ import * as DailyRotateFile from 'winston-daily-rotate-file';
             }),
           ),
         }),
-        // new winston.transports.File({
-        //   filename: 'error.log',
-        //   level: 'error',
-        // }),
         new DailyRotateFile({
           format: winston.format.combine(
             winston.format.timestamp({
@@ -64,11 +60,12 @@ import * as DailyRotateFile from 'winston-daily-rotate-file';
       database: process.env.DATABASE_DB,
       entities: [Temp],
       synchronize: false, // 프로덕션 환경에서는 false로 설정
+      retryAttempts: 2,
     }),
-    AlramModule,
+    AlarmModule,
   ],
-  controllers: [AppController, AlramController],
-  providers: [AppService, AlramService],
+  controllers: [AppController, AlarmController],
+  providers: [AppService, AlarmService],
 })
 export class AppModule {
   constructor(private dataSource: DataSource) {}
