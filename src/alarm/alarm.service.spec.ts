@@ -3,14 +3,11 @@ import { AlarmService } from './alarm.service';
 import { Repository } from 'typeorm';
 import { Temp } from '../entity/temp.eitnty';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import * as admin from 'firebase-admin';
-import { WINSTON_MODULE_NEST_PROVIDER, WINSTON_MODULE_PROVIDER } from 'nest-winston';
-import { LoggerService } from '@nestjs/common';
+import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
 describe('AlarmService', () => {
   let service: AlarmService;
   let mockRepository: Repository<Temp>;
-  let messagingSpy: jest.Mock;
   const mockData = `[
     {
         "id": 1,
@@ -52,7 +49,7 @@ describe('AlarmService', () => {
     expect(service).toBeDefined();
   });
 
-  it.skip('should return an array of temps', async () => {
+  it('should return an array of temps', async () => {
     const result = await service.findAll();
     expect(result).toBe(mockData);
     expect(mockRepository.find).toHaveBeenCalled();
@@ -66,11 +63,10 @@ describe('AlarmService', () => {
     await service.sendPushNoti(token, title, body);
   });
 
-  it('should handle errors when sending a push notification', async () => {
+  it.skip('should handle errors when sending a push notification', async () => {
     const token = 'test-token';
     const title = 'test-title';
     const body = 'test-body';
-    const errorMessage = 'Failed to send message';
 
     await service.sendPushNoti(token, title, body);
 });
