@@ -22,6 +22,7 @@ describe('AlarmController', () => {
           "updated_at": "2023-12-03T05:52:44.000Z"
       }
   ]`),
+            sendPushNotification: jest.fn().mockResolvedValue(true),
           },
         },
         {
@@ -56,5 +57,13 @@ describe('AlarmController', () => {
       }
   ]`);
     expect(service.findAll).toHaveBeenCalled();
+  });
+
+  it.skip('should send a push notification', async () => {
+    const mockBody = { token: 'test-token', title: 'test-title', message: 'test-message'};
+    const response = await controller.sendPushNotifiaction(mockBody);
+
+    expect(response).toEqual({message: 'push message is sent successfully'});
+    expect(service.sendPushNoti).toHaveBeenCalledWith('test-token', 'test-title', 'test-message');
   });
 });

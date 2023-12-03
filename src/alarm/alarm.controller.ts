@@ -1,4 +1,4 @@
-import { Controller, Get, Inject, LoggerService } from '@nestjs/common';
+import { Body, Controller, Get, Inject, LoggerService, Post } from '@nestjs/common';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { AlarmService } from './alarm.service';
 import { Temp } from 'src/entity/temp.eitnty';
@@ -19,5 +19,12 @@ export class AlarmController {
 
     this.logger.log('called getHome()', 'Alarm Controller');
     return data;
+  }
+
+  @Post('/send-push')
+  async sendPushNotifiaction(@Body() body: any) {
+    const { token, title, message} = body;
+    await this.alarmService.sendPushNoti(token, title, message);
+    return {message: 'push message is sent successfully'};
   }
 }
