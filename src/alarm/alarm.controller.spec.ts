@@ -7,7 +7,6 @@ describe('AlarmController', () => {
   let controller: AlarmController;
   let service: AlarmService;
 
-
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AlarmController],
@@ -27,7 +26,13 @@ describe('AlarmController', () => {
         },
         {
           provide: WINSTON_MODULE_NEST_PROVIDER,
-          useValue: {log: jest.fn(), error: jest.fn(), warn: jest.fn(), debug: jest.fn(), verbose: jest.fn()},
+          useValue: {
+            log: jest.fn(),
+            error: jest.fn(),
+            warn: jest.fn(),
+            debug: jest.fn(),
+            verbose: jest.fn(),
+          },
         },
       ],
     }).compile();
@@ -38,8 +43,8 @@ describe('AlarmController', () => {
 
   it('shoud be defined', () => {
     expect(controller).toBeDefined();
-});
-  
+  });
+
   it('should return an array of temps', async () => {
     const result = await controller.getHome();
     expect(result).toEqual(`[
@@ -51,5 +56,5 @@ describe('AlarmController', () => {
       }
   ]`);
     expect(service.findAll).toHaveBeenCalled();
-  }); 
+  });
 });
