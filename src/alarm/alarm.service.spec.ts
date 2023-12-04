@@ -7,7 +7,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 describe('AlarmService', () => {
   let service: AlarmService;
   let mockRepository: Repository<Temp>;
-  let mockData = `[
+  const mockData = `[
     {
         "id": 1,
         "message": "hello word!",
@@ -18,14 +18,15 @@ describe('AlarmService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AlarmService, 
+      providers: [
+        AlarmService,
         {
-         provide: getRepositoryToken(Temp),
-         useValue: {
-          find: jest.fn().mockResolvedValue(mockData),
-         },
-      },
-    ],
+          provide: getRepositoryToken(Temp),
+          useValue: {
+            find: jest.fn().mockResolvedValue(mockData),
+          },
+        },
+      ],
     }).compile();
 
     service = module.get<AlarmService>(AlarmService);
