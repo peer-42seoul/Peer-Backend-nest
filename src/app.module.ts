@@ -12,7 +12,7 @@ import {
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AlarmModule } from './alarm/alarm.module';
-import { Temp } from './entity/temp.eitnty';
+import { Temp } from './alarm/entity/temp.eitnty';
 import * as DailyRotateFile from 'winston-daily-rotate-file';
 import * as admin from 'firebase-admin';
 
