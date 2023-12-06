@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AlarmService } from './alarm.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AlarmController } from './alarm.controller';
-import { Temp } from 'src/alarm/entity/temp.eitnty';
+import { Temp } from '../entity/temp.eitnty';
 import { WinstonModule } from 'nest-winston';
 
 @Module({

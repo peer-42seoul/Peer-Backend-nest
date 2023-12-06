@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AlarmService } from './alarm.service';
 import { Repository } from 'typeorm';
-import { Temp } from './entity/temp.eitnty';
+import { Temp } from '../entity/temp.eitnty';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 

@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Inject, LoggerService, Post } from '@nestjs/common';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { AlarmService } from './alarm.service';
-import { Temp } from 'src/alarm/entity/temp.eitnty';
+import { Temp } from '../entity/temp.eitnty';
 
 @Controller('alarm')
 export class AlarmController {
