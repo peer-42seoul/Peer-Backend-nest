@@ -1,6 +1,6 @@
 import { Inject, Injectable, LoggerService } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Temp } from './entity/temp.eitnty';
+import { Temp } from 'src/alarm/entity/temp.eitnty';
 import { Repository } from 'typeorm';
 import * as admin from 'firebase-admin';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
