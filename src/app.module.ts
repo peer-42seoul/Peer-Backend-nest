@@ -14,6 +14,7 @@ import { DataSource } from 'typeorm';
 import { AlarmModule } from './alarm/alarm.module';
 import { Temp } from './entity/temp.eitnty';
 import * as DailyRotateFile from 'winston-daily-rotate-file';
+import * as admin from 'firebase-admin';
 
 @Module({
   imports: [
@@ -68,5 +69,9 @@ import * as DailyRotateFile from 'winston-daily-rotate-file';
   providers: [AppService, AlarmService],
 })
 export class AppModule {
-  constructor(private dataSource: DataSource) {}
+  constructor(private dataSource: DataSource) {
+    admin.initializeApp({
+      credential: admin.credential.cert('./env/firebase/peer-web-application-firebase-adminsdk-5rr4e-7c6fde0209.json'),
+    })
+  }
 }

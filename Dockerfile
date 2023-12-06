@@ -26,4 +26,4 @@ COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY --from=build /usr/src/app/dist ./dist
 
 # 애플리케이션 실행
-CMD ["node", "dist/main"]
+CMD ["sh", "-c", "NODE_ENV=remote && node dist/main"]
